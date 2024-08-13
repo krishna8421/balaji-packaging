@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body
-        className={`${inter.className} ${platypi.className} max-w-5xl mx-auto`}
+        className={`${platypi.variable} ${inter.variable} font-inter max-w-4xl min-h-screen mx-auto`}
       >
         <Providers>
           <nav className="flex items-center justify-between p-2">
