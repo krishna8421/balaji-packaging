@@ -8,7 +8,12 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        platypi: ["var(--font-platypi)"],
+        inter: ["var(--font-inter)"],
+      },
+    },
   },
   darkMode: "class",
   plugins: [nextui()],

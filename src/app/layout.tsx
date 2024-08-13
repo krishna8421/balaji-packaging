@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import "@/styles/globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { inter, platypi } from "@/utils/fonts";
+import ThemeSwitcher from "@/components/theme-switcher";
 
 export const metadata: Metadata = {
   title: "Balaji Packaging",
@@ -17,8 +16,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
-      <body className={inter.className}>
-        <Providers>{children}</Providers>
+      <body
+        className={`${inter.className} ${platypi.className} max-w-5xl mx-auto`}
+      >
+        <Providers>
+          <nav className="flex items-center justify-between p-2">
+            <span className="font-platypi font-bold">Balaji Packaging</span>
+            <ThemeSwitcher />
+          </nav>
+          {children}
+        </Providers>
       </body>
     </html>
   );
