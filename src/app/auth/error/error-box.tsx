@@ -24,7 +24,7 @@ const ErrorBox = () => {
         color="danger"
         variant="bordered"
         startContent={<TbReload />}
-        onClick={() => router.push("/admin/auth")}
+        onClick={() => router.push("/auth")}
       >
         Retry
       </Button>

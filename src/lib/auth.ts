@@ -22,8 +22,8 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/admin/auth",
-    error: "/admin/auth/error",
+    signIn: "/auth",
+    error: "/auth/error",
   },
   callbacks: {
     async signIn({ account, profile }) {
@@ -43,5 +43,5 @@ export const getServerAuthSession = async () =>
 
 export async function authenticate() {
   const session = await getServerSession(authOptions);
-  if (!session) return redirect("/admin/auth");
+  if (!session) return redirect("/auth");
 }

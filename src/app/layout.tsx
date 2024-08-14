@@ -24,7 +24,6 @@ export default function RootLayout({
       >
         <Providers>
           <NavBar />
-          <div className="h-16" />
           <main className="p-4">{children}</main>
           <Toaster position="bottom-right" />
         </Providers>

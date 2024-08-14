@@ -1,18 +1,18 @@
 "use client";
 
-import { handleAddClient } from "./actions";
+import { handleAddCompany } from "./actions";
 import { Input, Button } from "@nextui-org/react";
 import { toast } from "sonner";
 import { useRef } from "react";
 
-const AddClientForm = () => {
+const AddCompanyForm = () => {
   const ref = useRef<HTMLFormElement>(null);
   return (
     <form
       ref={ref}
       className="flex flex-wrap gap-8 justify-center"
       action={async (formData) => {
-        const res = await handleAddClient(formData);
+        const res = await handleAddCompany(formData);
         if (res.success) {
           toast.success(res.msg);
           ref.current?.reset();
@@ -28,7 +28,7 @@ const AddClientForm = () => {
         name="name"
         label="Name"
         labelPlacement="outside"
-        placeholder="Client's name"
+        placeholder="Company's name"
       />
       <Input
         className="max-w-96"
@@ -37,7 +37,7 @@ const AddClientForm = () => {
         name="email"
         label="Email"
         labelPlacement="outside"
-        placeholder="Client's email"
+        placeholder="Company's email"
       />
       <Input
         className="max-w-96"
@@ -46,7 +46,7 @@ const AddClientForm = () => {
         name="address"
         label="Address"
         labelPlacement="outside"
-        placeholder="Client's address"
+        placeholder="Company's address"
       />
       <Input
         className="max-w-96"
@@ -55,7 +55,7 @@ const AddClientForm = () => {
         name="phone"
         label="Phone"
         labelPlacement="outside"
-        placeholder="Client's phone number"
+        placeholder="Company's phone number"
       />
       <Input
         className="max-w-96"
@@ -64,7 +64,7 @@ const AddClientForm = () => {
         name="gstNumber"
         label="GST Number"
         labelPlacement="outside"
-        placeholder="Client's GST number"
+        placeholder="Company's GST number"
       />
       <Input
         className="max-w-96"
@@ -73,14 +73,14 @@ const AddClientForm = () => {
         name="postalCode"
         label="Postal Code"
         labelPlacement="outside"
-        placeholder="Client's postal code"
+        placeholder="Company's postal code"
       />
 
       <Button
         type="submit"
         variant="ghost"
         color="success"
-        aria-label="Add new client"
+        aria-label="Add new company"
         className="w-11/12 mt-6 mb-40"
       >
         Add
@@ -89,4 +89,4 @@ const AddClientForm = () => {
   );
 };
 
-export default AddClientForm;
+export default AddCompanyForm;

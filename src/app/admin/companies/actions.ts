@@ -1,21 +1,21 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { Client } from "@/types";
+import { Company } from "@/types";
 import { revalidatePath } from "next/cache";
 import z from "zod";
 
-export const handleDeleteClient = async (id: string) => {
-  await db.client.delete({
+export const handleDeleteCompany = async (id: string) => {
+  await db.company.delete({
     where: {
       id,
     },
   });
 
-  revalidatePath("/admin/clients");
+  revalidatePath("/admin/companies");
 };
 
-const ClientSchema = z.object({
+const CompanySchema = z.object({
   id: z.string().optional(),
   name: z.string(),
   email: z.string().email(),
@@ -25,7 +25,7 @@ const ClientSchema = z.object({
   postalCode: z.string(),
 });
 
-export const handleAddClient = async (formData: FormData) => {
+export const handleAddCompany = async (formData: FormData) => {
   const name = formData.get("name");
   const email = formData.get("email");
   const address = formData.get("address");
@@ -33,7 +33,7 @@ export const handleAddClient = async (formData: FormData) => {
   const gstNumber = formData.get("gstNumber");
   const postalCode = formData.get("postalCode");
 
-  const parseResult = ClientSchema.safeParse({
+  const parseResult = CompanySchema.safeParse({
     name,
     email,
     address,
@@ -51,39 +51,39 @@ export const handleAddClient = async (formData: FormData) => {
 
   try {
     if (
-      await db.client.findUnique({
+      await db.company.findUnique({
         where: {
           email: parseResult.data.email,
         },
       })
     ) {
       return {
-        msg: "Client already exists",
+        msg: "Company already exists",
         success: false,
       };
     }
 
-    await db.client.create({
+    await db.company.create({
       data: parseResult.data,
     });
 
-    revalidatePath("/admin/clients");
+    revalidatePath("/admin/companies");
 
     return {
-      msg: "Client added successfully",
+      msg: "Company added successfully",
       success: true,
     };
   } catch (e) {
     console.log(e);
     return {
-      msg: "Failed to add client",
+      msg: "Failed to add company",
       success: false,
     };
   }
 };
 
-export const handleEditClient = async (clientData: Partial<Client>) => {
-  const parseResult = ClientSchema.safeParse(clientData);
+export const handleEditCompany = async (companyData: Partial<Company>) => {
+  const parseResult = CompanySchema.safeParse(companyData);
 
   if (!parseResult.success) {
     return {
@@ -93,23 +93,23 @@ export const handleEditClient = async (clientData: Partial<Client>) => {
   }
 
   try {
-    await db.client.update({
+    await db.company.update({
       where: {
-        id: clientData.id,
+        id: companyData.id,
       },
-      data: clientData,
+      data: companyData,
     });
 
-    revalidatePath("/admin/clients");
+    revalidatePath("/admin/companies");
 
     return {
-      msg: "Client updated successfully",
+      msg: "Company updated successfully",
       success: true,
     };
   } catch (e) {
     console.log(e);
     return {
-      msg: "Failed to update client",
+      msg: "Failed to update company",
       success: false,
     };
   }

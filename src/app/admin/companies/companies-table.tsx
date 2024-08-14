@@ -12,10 +12,10 @@ import {
 } from "@nextui-org/react";
 import { TbEdit } from "react-icons/tb";
 import { MdDelete } from "react-icons/md";
-import { handleDeleteClient } from "./actions";
-import EditClientModal from "./edit-client-modal";
-import { Client } from "@/types";
-import { useClientStore } from "@/store/useClientStore";
+import { handleDeleteCompany } from "./actions";
+import EditCompanyModal from "./edit-company-model";
+import { Company } from "@/types";
+import { useCompanyStore } from "@/store/useCompanyStore";
 
 const columns = [
   { name: "NAME", uid: "name" },
@@ -27,31 +27,31 @@ const columns = [
   { name: "ACTIONS", uid: "actions" },
 ];
 
-const ClientsTable = ({ clients }: { clients: Client[] }) => {
-  const { setEditClientData } = useClientStore((state) => state);
+const CompaniesTable = ({ companies }: { companies: Company[] }) => {
+  const { setEditCompanyData } = useCompanyStore((state) => state);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const renderCell = (client: Client, columnKey: string) => {
-    const cellValue = client[columnKey];
+  const renderCell = (company: Company, columnKey: string) => {
+    const cellValue = company[columnKey];
     switch (columnKey) {
       case "actions":
         return (
           <div className="relative flex items-center justify-center gap-2">
-            <Tooltip content="Edit client">
+            <Tooltip content="Edit company">
               <span
                 className="text-lg text-default-400 cursor-pointer active:opacity-50"
                 onClick={async () => {
-                  setEditClientData(client);
+                  setEditCompanyData(company);
                   onOpen();
                 }}
               >
                 <TbEdit />
               </span>
             </Tooltip>
-            <Tooltip color="danger" content="Delete client">
+            <Tooltip color="danger" content="Delete company">
               <span
                 className="text-lg text-danger cursor-pointer active:opacity-50"
-                onClick={async () => await handleDeleteClient(client.id)}
+                onClick={async () => await handleDeleteCompany(company.id)}
               >
                 <MdDelete />
               </span>
@@ -76,7 +76,7 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
             </TableColumn>
           ))}
         </TableHeader>
-        <TableBody items={clients}>
+        <TableBody items={companies}>
           {(item) => (
             <TableRow key={item.id}>
               {(columnKey) => (
@@ -88,9 +88,9 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
           )}
         </TableBody>
       </Table>
-      <EditClientModal isOpen={isOpen} onOpenChange={onOpenChange} />
+      <EditCompanyModal isOpen={isOpen} onOpenChange={onOpenChange} />
     </>
   );
 };
 
-export default ClientsTable;
+export default CompaniesTable;

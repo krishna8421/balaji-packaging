@@ -19,7 +19,7 @@ interface IProps {
   onOpenChange: () => void;
 }
 
-export default function EditModal({ isOpen, onOpenChange }: IProps) {
+export default function EditClientModal({ isOpen, onOpenChange }: IProps) {
   const { editClientData, setEditClientData } = useClientStore(
     (state) => state
   );
