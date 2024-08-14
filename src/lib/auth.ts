@@ -3,7 +3,6 @@ import Google from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "@/lib/db";
 import { Adapter } from "next-auth/adapters";
-import { ADMIN_EMAILS } from "@/constants";
 import { redirect } from "next/navigation";
 
 export const authOptions: NextAuthOptions = {
@@ -27,9 +26,14 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async signIn({ account, profile }) {
+      const admins = await db.adminEmail.findMany({
+        select: {
+          email: true,
+        },
+      });
       if (
         account?.provider === "google" &&
-        ADMIN_EMAILS.includes(profile?.email!)
+        admins.some((admin) => admin.email === profile?.email!)
       ) {
         return true;
       }
