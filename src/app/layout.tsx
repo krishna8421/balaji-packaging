@@ -5,6 +5,7 @@ import { inter, platypi } from "@/lib/fonts";
 import ThemeSwitcher from "@/components/theme-switcher";
 import Link from "next/link";
 import NavBar from "@/components/nav-bar";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Balaji Packaging",
@@ -23,7 +24,9 @@ export default function RootLayout({
       >
         <Providers>
           <NavBar />
-          {children}
+          <div className="h-16" />
+          <main className="p-4">{children}</main>
+          <Toaster position="bottom-right" />
         </Providers>
       </body>
     </html>

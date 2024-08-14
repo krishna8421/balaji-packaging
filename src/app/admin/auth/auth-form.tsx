@@ -10,7 +10,7 @@ const AuthForm = () => {
       action={async () => {
         await signIn("google");
       }}
-      className="flex justify-center mt-16"
+      className="flex justify-center"
     >
       <Button
         type="submit"

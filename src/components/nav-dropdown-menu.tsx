@@ -8,6 +8,7 @@ import {
   Avatar,
 } from "@nextui-org/react";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface NavDropdownMenuProps {
   email: string;
@@ -16,6 +17,8 @@ interface NavDropdownMenuProps {
 }
 
 const NavDropdownMenu = ({ email, image, name }: NavDropdownMenuProps) => {
+  const router = useRouter();
+
   return (
     <Dropdown placement="bottom-end">
       <DropdownTrigger>
@@ -34,11 +37,24 @@ const NavDropdownMenu = ({ email, image, name }: NavDropdownMenuProps) => {
           <p className="font-semibold">Signed in as</p>
           <p className="font-semibold">{email}</p>
         </DropdownItem>
-        <DropdownItem key="orders">Orders</DropdownItem>
-        <DropdownItem key="companies">Companies</DropdownItem>
-        <DropdownItem key="clients">Clients</DropdownItem>
-        <DropdownItem key="orders-placed">Orders Placed</DropdownItem>
-        <DropdownItem key="orders-received">Orders Received</DropdownItem>
+        <DropdownItem onClick={() => router.push("/admin/admins")} key="admins">
+          Admins
+        </DropdownItem>
+        <DropdownItem onClick={() => router.push("/")} key="orders">
+          Orders
+        </DropdownItem>
+        <DropdownItem onClick={() => router.push("/")} key="companies">
+          Companies
+        </DropdownItem>
+        <DropdownItem onClick={() => router.push("/")} key="clients">
+          Clients
+        </DropdownItem>
+        <DropdownItem onClick={() => router.push("/")} key="orders-placed">
+          Orders Placed
+        </DropdownItem>
+        <DropdownItem onClick={() => router.push("/")} key="orders-received">
+          Orders Received
+        </DropdownItem>
         <DropdownItem
           key="logout"
           color="danger"

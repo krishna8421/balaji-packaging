@@ -12,7 +12,7 @@ const ErrorBox = () => {
   const error = errorParams.get("error");
 
   return (
-    <div className="py-16 rounded-lg mt-16 w-96 mx-auto flex flex-col items-center gap-10">
+    <div className="py-16 rounded-lg w-96 mx-auto flex flex-col items-center gap-10">
       <MdSmsFailed className="text-primary-red h-20 w-20" />
       <div className="flex flex-col items-center mb-4">
         <span className="text-2xl">{error}</span>
