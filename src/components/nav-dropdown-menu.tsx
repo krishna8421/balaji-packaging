@@ -40,19 +40,19 @@ const NavDropdownMenu = ({ email, image, name }: NavDropdownMenuProps) => {
         <DropdownItem onClick={() => router.push("/admin/admins")} key="admins">
           Admins
         </DropdownItem>
-        <DropdownItem onClick={() => router.push("/")} key="orders">
+        <DropdownItem onClick={() => router.push("/admin/")} key="orders">
           Orders
         </DropdownItem>
-        <DropdownItem onClick={() => router.push("/")} key="companies">
+        <DropdownItem onClick={() => router.push("/admin/")} key="companies">
           Companies
         </DropdownItem>
-        <DropdownItem onClick={() => router.push("/")} key="clients">
+        <DropdownItem onClick={() => router.push("/admin/clients")} key="clients">
           Clients
         </DropdownItem>
-        <DropdownItem onClick={() => router.push("/")} key="orders-placed">
+        <DropdownItem onClick={() => router.push("/admin/")} key="orders-placed">
           Orders Placed
         </DropdownItem>
-        <DropdownItem onClick={() => router.push("/")} key="orders-received">
+        <DropdownItem onClick={() => router.push("/admin/")} key="orders-received">
           Orders Received
         </DropdownItem>
         <DropdownItem

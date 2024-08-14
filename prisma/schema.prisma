@@ -61,3 +61,13 @@ model AdminEmail {
 
   @@index([email])
 }
+
+model Client {
+  id         String @id @default(cuid())
+  name       String
+  email      String @unique
+  address    String
+  phone      String
+  gstNumber  String
+  postalCode String
+}

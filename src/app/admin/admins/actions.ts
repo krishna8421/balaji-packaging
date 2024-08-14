@@ -20,8 +20,6 @@ const AdminEmailSchema = z.object({
 
 export const handleAddAdminEmail = async (formData: FormData) => {
   const email = formData.get("email") as string;
-  console.log(email);
-  console.log(AdminEmailSchema.safeParse({ email }));
 
   if (!AdminEmailSchema.safeParse({ email }).success) {
     return {

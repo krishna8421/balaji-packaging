@@ -1,4 +1,5 @@
 import { authenticate, getServerAuthSession } from "@/lib/auth";
+import { Button } from "@nextui-org/button";
 
 const AdminPage = async () => {
   await authenticate();
@@ -7,6 +8,9 @@ const AdminPage = async () => {
   return (
     <div>
       <h1>Admin Page</h1>
+      <Button color="secondary" variant="solid">
+        Solid
+      </Button>
     </div>
   );
 };
