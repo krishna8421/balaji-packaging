@@ -13,6 +13,11 @@ const config: Config = {
         platypi: ["var(--font-platypi)"],
         inter: ["var(--font-inter)"],
       },
+      colors: {
+        primary: {
+          red: "#F31260",
+        },
+      },
     },
   },
   darkMode: "class",
