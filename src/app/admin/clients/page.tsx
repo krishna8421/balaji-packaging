@@ -9,8 +9,10 @@ const ClientsPage = async () => {
     <div className="flex flex-col gap-12">
       <h1 className="text-3xl font-semibold">Clients</h1>
       {clients.length > 0 && <ClientsTable clients={clients} />}
-      <span className="text-lg">Add new client</span>
-      <AddClientForm />
+      <div className="flex flex-col gap-8 items-center w-full">
+        <span className="text-lg font-semibold">Add new client</span>
+        <AddClientForm />
+      </div>
     </div>
   );
 };

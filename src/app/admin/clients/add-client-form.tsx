@@ -1,7 +1,7 @@
 "use client";
 
 import { handleAddClient } from "./actions";
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button, Textarea } from "@nextui-org/react";
 import { toast } from "sonner";
 import { useRef } from "react";
 
@@ -10,7 +10,7 @@ const AddClientForm = () => {
   return (
     <form
       ref={ref}
-      className="flex flex-wrap gap-8 justify-center"
+      className="flex flex-col gap-8 justify-center w-full"
       action={async (formData) => {
         const res = await handleAddClient(formData);
         if (res.success) {
@@ -22,7 +22,7 @@ const AddClientForm = () => {
       }}
     >
       <Input
-        className="max-w-96"
+        className="w-full"
         isRequired
         type="text"
         name="name"
@@ -31,7 +31,7 @@ const AddClientForm = () => {
         placeholder="Client's name"
       />
       <Input
-        className="max-w-96"
+        className="w-full"
         isRequired
         type="email"
         name="email"
@@ -40,16 +40,7 @@ const AddClientForm = () => {
         placeholder="Client's email"
       />
       <Input
-        className="max-w-96"
-        isRequired
-        type="text"
-        name="address"
-        label="Address"
-        labelPlacement="outside"
-        placeholder="Client's address"
-      />
-      <Input
-        className="max-w-96"
+        className="w-full"
         isRequired
         type="text"
         name="phone"
@@ -58,7 +49,7 @@ const AddClientForm = () => {
         placeholder="Client's phone number"
       />
       <Input
-        className="max-w-96"
+        className="w-full"
         isRequired
         type="text"
         name="gstNumber"
@@ -67,7 +58,7 @@ const AddClientForm = () => {
         placeholder="Client's GST number"
       />
       <Input
-        className="max-w-96"
+        className="w-full"
         isRequired
         type="number"
         name="postalCode"
@@ -75,13 +66,21 @@ const AddClientForm = () => {
         labelPlacement="outside"
         placeholder="Client's postal code"
       />
-
+      <Textarea
+        className="w-full"
+        isRequired
+        type="text"
+        name="address"
+        label="Address"
+        labelPlacement="outside"
+        placeholder="Client's address"
+      />
       <Button
         type="submit"
         variant="ghost"
         color="success"
         aria-label="Add new client"
-        className="w-11/12 mt-6 mb-40"
+        className="w-full mt-6 mb-40"
       >
         Add
       </Button>
