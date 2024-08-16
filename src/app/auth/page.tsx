@@ -6,7 +6,6 @@ const AuthPage = async () => {
   const session = await getServerAuthSession();
   if (session) return redirect("/admin");
 
-  console.log(session);
   return <AuthForm />;
 };
 

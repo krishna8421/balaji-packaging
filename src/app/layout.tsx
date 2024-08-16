@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Providers } from "./providers";
 import "@/styles/globals.css";
 import { inter, platypi } from "@/lib/fonts";
-import ThemeSwitcher from "@/components/theme-switcher";
-import Link from "next/link";
 import NavBar from "@/components/nav-bar";
 import { Toaster } from "sonner";
 
@@ -20,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body
-        className={`${platypi.variable} ${inter.variable} font-inter max-w-4xl min-h-screen mx-auto`}
+        className={`${platypi.variable} ${inter.variable} font-inter max-w-6xl min-h-screen mx-auto`}
       >
         <Providers>
           <NavBar />

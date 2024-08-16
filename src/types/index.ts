@@ -19,3 +19,16 @@ export type Company = {
   postalCode: string;
   [key: string]: string;
 };
+
+export type OrderItem = {
+  id: string;
+  name: string;
+  gsm: string;
+  quantity: string;
+  isUrgent: boolean;
+  sizeA: string;
+  sizeB: string;
+  sizeAUnit: string;
+  sizeBUnit: string;
+  [key: string]: string | number | boolean;
+};
